@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://www.example.com/"
+             targetNamespace="http://www.example.com/"
+             name="MyWebService">
+
+    <types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.com/">
+            <!-- Опис типів даних -->
+            <!-- Додайте описи типів даних у цей розділ -->
+        </xs:schema>
+    </types>
+
+    <message name="RequestMessage">
+        <!-- Опис повідомлення -->
+        <!-- Додайте елементи повідомлення у цей розділ -->
+    </message>
+
+    <message name="ResponseMessage">
+        <!-- Опис повідомлення -->
+        <!-- Додайте елементи повідомлення у цей розділ -->
+    </message>
+
+    <portType name="MyWebServicePortType">
+        <!-- Опис операцій -->
+        <operation name="getInfo">
+            <input message="tns:RequestMessage"/>
+            <output message="tns:ResponseMessage"/>
+        </operation>
+        <!-- Додайте інші операції тут -->
+    </portType>
+
+    <binding name="MyWebServiceBinding" type="tns:MyWebServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <!-- Опис зв'язування операцій з протоколом SOAP -->
+        <operation name="getInfo">
+            <soap:operation soapAction="http://www.example.com/getInfo"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <!-- Додайте конфігурацію SOAP для інших операцій тут -->
+    </binding>
+
+    <service name="MyWebServiceService">
+        <port name="MyWebServicePort" binding="tns:MyWebServiceBinding">
+            <soap:address location="http://localhost:50627/WebService.asmx"/>
+        </port>
+    </service>
+</definitions>
